@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidding Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        label {
+            font-size: 1.1rem;
+            color: #333;
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+        input[type="text"], input[type="number"], input[type="radio"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #fafafa;
+        }
+        input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1rem;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .form-footer {
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        .form-footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .form-footer a:hover {
+            color: #45a049;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            label {
+                font-size: 1rem;
+            }
+            input[type="text"], input[type="number"] {
+                font-size: 1rem;
+            }
+            button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Your Bid</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="price">Bid Price:</label>
+            <input type="number" id="price" name="price" required><br><br>
+            <label>Are there more bidders?</label><br>
+            <input type="radio" id="yes" name="more_bidders" value="yes" required> Yes
+            <input type="radio" id="no" name="more_bidders" value="no"> No<br><br>
+            <button type="submit">Submit Bid</button>
+        </form>
+        <div class="form-footer">
+            <a href="#">View Previous Bids</a>
+        </div>
+    </div>
+</body>
+</html>
